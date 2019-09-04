@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class GradeBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String kor,eng,math, society, name, ssn, number;
+	private String kor,eng,math, society;
 
 	public String getKor() {
 		return kor;
@@ -38,33 +38,10 @@ public class GradeBean implements Serializable {
 		this.society = society;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSsn() {
-		return ssn;
-	}
-
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
 	@Override
 	public String toString() {
-		return "성적표\n[kor=" + kor + "\neng=" + eng + "\nmath=" + math + "\nsociety=" + society + "\nname=" + name
-				+ "\nssn=" + ssn + "\nnumber=" + number + "]";
+		return "GradeBean [kor=" + kor + ", eng=" + eng + ", math=" + math + ", society=" + society + "]";
 	}
+	
 	
 }

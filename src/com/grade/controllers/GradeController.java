@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.grade.domains.GradeBean;
+import com.grade.domains.StudentBean;
 import com.grade.serviceimpls.GradeServiceImpl;
 import com.grade.services.GradeService;
 
@@ -17,6 +18,7 @@ public class GradeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GradeBean param = new GradeBean();
+		StudentBean student = new StudentBean();
 		GradeService service = new GradeServiceImpl();
 		String ssn = request.getParameter("ssn");
 		String name = request.getParameter("name");
@@ -24,11 +26,11 @@ public class GradeController extends HttpServlet {
 		String eng = request.getParameter("eng");
 		String math = request.getParameter("math");
 		String society = request.getParameter("society");
-		param.setSsn(ssn);
+	//	param.setSsn(ssn);
 		param.setEng(eng);
 		param.setKor(kor);
 		param.setMath(math);
-		param.setName(name);
+	//	param.setName(name);
 		param.setSociety(society);
 		service.createGrade(param);
 		response.getWriter().append("Served at: ").append(request.getContextPath());

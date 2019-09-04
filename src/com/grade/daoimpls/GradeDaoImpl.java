@@ -26,8 +26,6 @@ public class GradeDaoImpl implements GradeDao{
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
 				BufferedReader reader = new BufferedReader(new FileReader(file));
 				writer.write(String.format("%s %s %s %s %s %s",
-						param.getName(),
-						param.getNumber(),
 						param.getEng(),
 						param.getKor(),
 						param.getMath(),
