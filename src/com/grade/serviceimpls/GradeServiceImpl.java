@@ -15,6 +15,7 @@ public class GradeServiceImpl implements GradeService{
 	}
 	
 	public void createGrade(GradeBean param) {
+	//	param.setNumber(createNumber(param));
 		dao.insertGrade(param);
 	}
 	
@@ -25,6 +26,7 @@ public class GradeServiceImpl implements GradeService{
 		
 		return String.format("학번:%s-%s%03d",
 				year,
+		//		param.getSsn().substring(7,8),
 				stNum);
 	}
 }
