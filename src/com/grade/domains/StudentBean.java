@@ -3,7 +3,7 @@ package com.grade.domains;
 import java.io.Serializable;
 
 public class StudentBean implements Serializable{
-	private String name, ssn, number;
+	private String name, ssn, yNumber;
 	public String getName() {
 		return name;
 	}
@@ -21,15 +21,15 @@ public class StudentBean implements Serializable{
 	}
 
 	public String getNumber() {
-		return number;
+		return yNumber;
 	}
-	public void setNumber(String number) {
-		this.number = number;
+	public void setNumber(String yNumber) {
+		this.yNumber = yNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "StudentBean [name=" + name + ", ssn=" + ssn + ", number=" + number + "]";
+		return "StudentBean [name=" + name + ", ssn=" + ssn + ", yNumber=" + yNumber + "]";
 	}
 
 }

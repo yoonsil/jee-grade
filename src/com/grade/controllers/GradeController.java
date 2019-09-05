@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.grade.daoimpls.GradeDaoImpl;
+import com.grade.daos.GradeDao;
 import com.grade.domains.GradeBean;
 import com.grade.domains.StudentBean;
+import com.grade.pool.Constants;
 import com.grade.serviceimpls.GradeServiceImpl;
 import com.grade.services.GradeService;
 
@@ -16,28 +19,37 @@ import com.grade.services.GradeService;
 public class GradeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		GradeBean param = new GradeBean();
-		StudentBean student = new StudentBean();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		GradeBean grade = new GradeBean();
 		GradeService service = new GradeServiceImpl();
-		String ssn = request.getParameter("ssn");
-		String name = request.getParameter("name");
-		String kor = request.getParameter("kor");
-		String eng = request.getParameter("eng");
-		String math = request.getParameter("math");
-		String society = request.getParameter("society");
-	//	param.setSsn(ssn);
-		param.setEng(eng);
-		param.setKor(kor);
-		param.setMath(math);
-	//	param.setName(name);
-		param.setSociety(society);
-		service.createGrade(param);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		//------------------------------------------
+		switch(request.getParameter("action")) {
+		case "move":
+			request.getRequestDispatcher
+			(String.format(Constants.VIEW_PATH,
+					"grade",request.getParameter("dest")))
+			.forward(request, response);
+			break;
+		case "grade":
+			String kor = request.getParameter("kor");
+			String eng = request.getParameter("eng");
+			String math = request.getParameter("math");
+			String society = request.getParameter("society");
+			grade.setEng(eng);
+			grade.setKor(kor);
+			grade.setMath(math);
+			grade.setSociety(society);
+			service.createGrade(grade);
+			request.getRequestDispatcher(String.format("%s.jsp","index"))
+			.forward(request, response);
+			break;
+		}
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+	//	doGet(request, response);
 	}
 
 }

@@ -2,6 +2,8 @@ package com.grade.daoimpls;
 
 import com.grade.daos.GradeDao;
 import com.grade.domains.GradeBean;
+import com.grade.pool.Constants;
+
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,22 +12,12 @@ import java.io.FileReader;
 
 
 public class GradeDaoImpl implements GradeDao{
-	public static final String FILE_PATH = String.format("C:%sUsers%sthisi%sjee2%sjee-grade%sWebContent%sresources%stxt%s"
-			,File.separator
-			,File.separator
-			,File.separator
-			,File.separator
-			,File.separator
-			,File.separator
-			,File.separator
-			,File.separator);
-	@Override
+	
 	public void insertGrade(GradeBean param) {
 		try {
-				File file = new File(FILE_PATH+"grade.txt");
+				File file = new File(Constants.FILE_PATH+"newGrade.txt");
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-				BufferedReader reader = new BufferedReader(new FileReader(file));
-				writer.write(String.format("%s %s %s %s %s %s",
+				writer.write(String.format("영어:%s 국어:%s 수학:%s 사회:%s",
 						param.getEng(),
 						param.getKor(),
 						param.getMath(),
